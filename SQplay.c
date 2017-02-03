@@ -1,5 +1,5 @@
 #include<stdio.h>
-int checkwin(char *a[4][4])
+int checkwin(char *a[4][4])                 //Function to check if the game is completed
 {
     int i,j,temp=1;
     for(i=0;i<4;i++)
@@ -19,22 +19,11 @@ int checkwin(char *a[4][4])
 }
 void main()
 {
-	char a[4][4];
-	char ch=' ';
+	char a[4][4]={15,14,10,9,7,5,12,8,1,6,3,4,2,11,13,' '};     //Initializing char array 
+	char ch=' ';                        
 	int i,j,k,l,flag;
-	i=1;
-	for(k=0;k<4;k++)
-	{
-		for(l=0;l<4;l++)
-		{
-			a[k][l]=i;
-			i++;
-		}
-	}
-	
 	i=3;
 	j=3;
-	a[i][j]=' ';
     flag=0;
 	while (ch!='Q'&&flag==0)
 	{
@@ -45,7 +34,7 @@ void main()
 		{
 		    if(a[k][l]==32)
 		    {
-		        printf(" %c |",a[k][l]);
+		        printf(" %c |",a[k][l]);                //printing the pattern to the player
 		    }
 		    else
 		    {
@@ -59,7 +48,7 @@ void main()
 		scanf("%c",&ch);
 		printf("\n");
 		switch(ch)
-		{
+		{                               //Logic to shift the elements based on user input
 			case 'U':
 			i-=1;
 			if(i==-1)
@@ -76,7 +65,7 @@ void main()
 			break;
 			case 'D':
 			a[i][j]=a[(i+1)%4][j];
-			i=(i+1)%4;
+			i=(i+1)%4;                      //(i+1)%4 is used to overcome bounary over-flow
 			a[i][j]=' ';
 			break;
 			case 'L':
@@ -93,17 +82,17 @@ void main()
 			}
 			break;
 			case 'R':
-			a[i][j]=a[i][(j+1)%4];
+			a[i][j]=a[i][(j+1)%4];      //(j+1)%4 is used to check boundary over-flow
 			j=(j+1)%4;
 			a[i][j]=' ';
 			break;
 			case 'Q':
 			break;			
 		}
-		flag=checkwin(&a);
-		if(flag==1)
-        {
-        for(k=0;k<4;k++)
+		flag=checkwin(&a);                  //To check if the game is completed  
+		if(flag==1)                           
+        {                                   //To print the matrix if the game is completed
+        for(k=0;k<4;k++)                        
 	    {
 	        printf("-------------------\n|");
     		for(l=0;l<4;l++)
