@@ -8,18 +8,14 @@ int nextprime(int n)
     {
         return 0;
     }
-    for(i=5;i<h;i+6)
+    for(i=6;i<h;i+=6)
     {
-        if((n%i)==0)
+        if((n%(i-1))==0||(n%(i+1))==0)
         {
             return 0;
         }
     }
-    for(i=7;i<h;i+6)
-    {
-        if((n%i)==0)
-        return 0;
-    }
+    
     return 1;
 }
 int main(void) {
@@ -32,7 +28,7 @@ int main(void) {
 	}
 	else
 	{
-	    x1=n+(n%6)-1;
+	    x1=((n/6)+1)*6-1;
 	    x2=x1+2;
 	}
 	do
