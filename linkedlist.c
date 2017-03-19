@@ -48,11 +48,13 @@ void check(struct node* head,int x,int n){
     while(count<n){
         
         if((traverser->data)==x){
-            printf("%d\n%d\n",traverser->data,count);
+            printf("The index is %d\n%d\n",traverser->data,count);
             traverser=traverser->next;
-            count++;
+            
             flag=0;
+            break;
         }
+        count++;
     }
     if(flag!=0){
         printf("Element Not Found!!!");
@@ -60,7 +62,7 @@ void check(struct node* head,int x,int n){
 }
 
 int main() {
-	int n,x;
+	int n,x,val;
 	struct node* head;
 	head=(struct node*)malloc(sizeof(struct node));
 	printf("Enter the number nodes\n");
@@ -68,7 +70,8 @@ int main() {
 	printf("Enter the data\n");
 	head=create_list(n);
 	printf("Enter the value to check");
-	check(head,x,n);
+	scanf("%d",&val);
+	check(head,x,val);
 	//	printf("%d",(head->data));
 	return 0;
 }
