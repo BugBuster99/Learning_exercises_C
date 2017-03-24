@@ -72,6 +72,6 @@ int main() {
 	printf("Enter the value to check");
 	scanf("%d",&val);
 	check(head,x,val);
-	//	printf("%d",(head->data));
+	
 	return 0;
 }
